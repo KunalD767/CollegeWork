@@ -1,11 +1,11 @@
 #include<iostream>
 using namespace std;
-class difference{
+class differerence{
     
     int  n, *a;
     public:
-    difference(){n=10;a=new int[10];}
-    difference(int a){n=a;this->a=new int[n];}
+    differerence(){n=10;a=new int[10];}
+    differerence(int a){n=a;this->a=new int[n];}
     void input(){
         cout<<"Enter elements";
         for (int i = 0; i < n; ++i) {
@@ -19,27 +19,27 @@ class difference{
                 }
                 cout<<endl;
                 }
-                 friend int diff(difference a,int N);
+                 friend int differ(differerence a,int N);
             };
-            int diff(difference a,int N){
+            int differ(differerence a,int N){
                 for (int i=0;i<a.n;i++){
                     for(int j=i+1;j<a.n;j++){
                         if(a.a[j]-a.a[i]==N){
-                            cout<<"Yes, There exists a pair "<<a.a[i]<<" and "<<a.a[j]<<" whose difference is "<<N;
+                            cout<<"Yes, There exists a pair "<<a.a[i]<<" and "<<a.a[j]<<" whose differerence is "<<N;
                             return 1;
                         }
                     }
                 }
-                cout<<"There does not exist a pair whose difference is N";
+                cout<<"There does not exist a pair whose differerence is N";
                 return 0;
             }
             int main(){
-                difference a(6);
+                differerence a(6);
                 a.input();
                 a.output();
                 int N;
-                cout<<"Enter the number to find pairs of elements with difference equal to it.";
+                cout<<"Enter the number to find pairs of elements with differerence equal to it.";
                 cin>>N;
-                diff(a,N);
+                differ(a,N);
                 return 0;
             }    
