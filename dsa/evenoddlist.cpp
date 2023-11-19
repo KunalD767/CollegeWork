@@ -34,13 +34,13 @@ void insert(Node* &head, int pos, int data) {
 void displayoddeven(Node* &head){
     Node* ptr=head->next;
     Node* ptr1=head;
-    cout<<" the even nodes are ";
+    cout<<" the even nodes are "<<endl;
     while(ptr!=NULL&&ptr->next!=NULL){
         
         cout<<ptr->data<<" ";
         ptr=ptr->next->next;
     }
-    cout<<" the odd nodes are ";
+    cout<<endl<<" the odd nodes are "<<endl;
      while(ptr1!=NULL&&ptr1->next!=NULL){
         
         cout<<ptr1->data<<" ";
@@ -60,6 +60,7 @@ void display(Node* &head){
         cout<< " " << curr->data ;
         curr=curr->next;
     }
+    cout<<endl;
 }
 int main(){
     Node* head=new Node(62);

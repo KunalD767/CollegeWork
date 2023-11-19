@@ -53,7 +53,7 @@ void dup(Node* &head,int x){
          } 
         b=b->next;
     }
-    cout<<" the total number of duplicates "<<" is "<< count;
+    cout<<" the total number of duplicates of "<<x<<" is  "<<" is "<< count<<endl;
 
 }
 void display(Node* &head){
