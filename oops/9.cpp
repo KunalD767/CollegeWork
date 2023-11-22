@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Number;  // Forward declaration
+class Number; 
 
 class SumCalculator {
 public:
@@ -14,7 +14,7 @@ private:
     int num2;
 
 public:
-    Number(int n1, int n2) : num1(n1), num2(n2) {}
+    Number(int n1, int n2){ num1=n1; num2=n2; }
     friend class SumCalculator;
 };
 

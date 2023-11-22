@@ -1,24 +1,30 @@
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 using namespace std;
-int main(){
-    ofstream fin;
-    fin.open("Sample2.txt");
-    string line;
-    do {
-        cout<<"Enter";
-        cin>>line;
-        fin<<line;
-    }while(!line.empty());
-    string c;
-    ifstream fout;
-    
-    while(!fout.eof()){
-        fout>>c;
-        cout<<c;
 
-    }
-    fin.close();
+int main() {
+    ofstream fout;
+    fout.open("Sample2.txt");
+    string line;
+    
+    do {
+        cout << "Enter: ";
+        getline(cin, line);
+        if (!line.empty()) {
+            fout << line << endl;
+        }
+    } while (!line.empty());
+
     fout.close();
+
+    string c;
+    ifstream fin;
+    fin.open("Sample2.txt");
+
+    while (getline(fin, c)) {
+        cout << c << endl;
+    }
+
+    fin.close();
     return 0;
 }

@@ -1,1 +1,2 @@
-Hello
+cd "/Users/kunal767/ProjectA/oops/" && g++ fileop.cpp -o fileop && "/Users/kunal767/ProjectA/oops/"fileop
+hello
