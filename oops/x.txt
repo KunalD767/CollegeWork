@@ -1,0 +1,2 @@
+The Name of the student is A , The ID is 1 ,The age is 19 ,The sex isM ,the height and weight are150 60
+The Name of the student is B , The ID is 2 ,The age is 29 ,The sex isF ,the height and weight are155 50
