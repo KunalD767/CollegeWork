@@ -2,7 +2,6 @@
 using namespace std;
 int g=10;
 int getter(){
-
     return g;
 }
 void setter(int x){
