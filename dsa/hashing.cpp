@@ -48,7 +48,7 @@ int main() {
     if (hash_table.search(search_key)) {
         cout << "Key " << search_key << " found in the hash table." << endl;
     } else {
-        cout << "Key " << search_key << " not found in the hash table." << endl;
+        cout << "Key " << search_key << " not found in the hash table."
     }
 
     return 0;
