@@ -44,7 +44,7 @@ class Square extends Shape {
     }
 }
 
-public class ShapeTest {
+public class ShapeTest1 {
     public static void main(String[] args) {
         Shape c = new Circle();
         Shape t = new Triangle();
@@ -58,6 +58,7 @@ public class ShapeTest {
 
         s.draw();
         s.erase();
+        System.out.println("Kajal Kansal 20914802722");
+
     }
 }
-

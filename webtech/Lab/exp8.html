@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Students XML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 30px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student Information</h2>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Enrolment</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const xmlData = `
+    <students>
+      <student>
+        <enrolment>ENR001</enrolment>
+        <name>Kunal Sharma</name>
+        <mobile>9876543210</mobile>
+        <email>kunal@example.com</email>
+      </student>
+      <student>
+        <enrolment>ENR002</enrolment>
+        <name>Priya Verma</name>
+        <mobile>9123456789</mobile>
+        <email>priya@example.com</email>
+      </student>
+      <student>
+        <enrolment>ENR003</enrolment>
+        <name>Rahul Mehta</name>
+        <mobile>9988776655</mobile>
+        <email>rahul@example.com</email>
+      </student>
+    </students>`;
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+    const students = xmlDoc.getElementsByTagName("student");
+    const tableBody = document.querySelector("#studentTable tbody");
+
+    for (let i = 0; i < students.length; i++) {
+      const student = students[i];
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${student.getElementsByTagName("enrolment")[0].textContent}</td>
+        <td>${student.getElementsByTagName("name")[0].textContent}</td>
+        <td>${student.getElementsByTagName("mobile")[0].textContent}</td>
+        <td>${student.getElementsByTagName("email")[0].textContent}</td>
+      `;
+      tableBody.appendChild(row);
+    }
+  </script>
+
+</body>
+</html>

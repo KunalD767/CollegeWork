@@ -1,0 +1,4 @@
+com/mycompany/hibernatecrud/Student.class
+com/mycompany/hibernatecrud/HibernateUtil.class
+com/mycompany/hibernatecrud/studentDAO.class
+com/mycompany/hibernatecrud/MainApp.class

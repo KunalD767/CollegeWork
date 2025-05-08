@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .quiz-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h3 {
+      margin-bottom: 10px;
+    }
+
+    .question label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Quiz</h1>
+
+  <div class="quiz-container">
+    <form id="quizForm">
+      <div class="question">
+        <h3>1. What is the capital of France?</h3>
+        <label><input type="radio" name="q1" value="a"> Berlin</label>
+        <label><input type="radio" name="q1" value="b"> Madrid</label>
+        <label><input type="radio" name="q1" value="c"> Paris</label>
+      </div>
+
+      <div class="question">
+        <h3>2. Which language runs in a web browser?</h3>
+        <label><input type="radio" name="q2" value="a"> Java</label>
+        <label><input type="radio" name="q2" value="b"> C++</label>
+        <label><input type="radio" name="q2" value="c"> JavaScript</label>
+      </div>
+
+      <div class="question">
+        <h3>3. What does CSS stand for?</h3>
+        <label><input type="radio" name="q3" value="a"> Computer Style Sheets</label>
+        <label><input type="radio" name="q3" value="b"> Cascading Style Sheets</label>
+        <label><input type="radio" name="q3" value="c"> Colorful Style Sheets</label>
+      </div>
+
+      <button type="button" onclick="calculateScore()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateScore() {
+      const answers = {
+        q1: "c",
+        q2: "c",
+        q3: "b"
+      };
+
+      let score = 0;
+      let total = Object.keys(answers).length;
+
+      for (let q in answers) {
+        const userAnswer = document.querySelector(`input[name="${q}"]:checked`);
+        if (userAnswer && userAnswer.value === answers[q]) {
+          score++;
+        }
+      }
+
+      document.getElementById("result").textContent = `Your score is ${score} out of ${total}`;
+    }
+  </script>
+
+</body>
+</html>

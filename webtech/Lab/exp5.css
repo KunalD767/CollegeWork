@@ -1,0 +1,86 @@
+/* External CSS: Global styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #003366, #005bb5);
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* External CSS: Header */
+  header {
+    background-color: #002244;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* External CSS: Navigation bar */
+  nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  nav ul li a:hover {
+    background-color: #ffcc00;
+    color: black;
+    border-radius: 5px;
+  }
+  
+  /* External CSS: Main Content */
+  main {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  /* External CSS: Section Styling */
+  section {
+    width: 80%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+  }
+  
+  /* External CSS: Footer */
+  footer {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }

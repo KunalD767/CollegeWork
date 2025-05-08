@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Colorful Form Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffffcc;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    #output {
+      margin-top: 20px;
+      height: 100px;
+      background: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      resize: none;
+    }
+
+    .btn {
+      background-color: #6c63ff;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #4a47a3;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>User Info Form</h2>
+    <form id="infoForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email">
+
+      <label for="mobile">Mobile No:</label>
+      <input type="text" id="mobile" name="mobile">
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="">-- Select Gender --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="color">Favourite Colour:</label>
+      <select id="color" name="color">
+        <option value="">-- Select Colour --</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Purple">Purple</option>
+        <option value="Orange">Orange</option>
+      </select>
+
+      <button type="button" class="btn" onclick="displayInfo()">Display Info</button>
+    </form>
+
+    <textarea id="output" readonly placeholder="Your information will appear here..."></textarea>
+  </div>
+
+  <script>
+    function displayInfo() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const gender = document.getElementById("gender").value;
+      const color = document.getElementById("color").value;
+
+      // Basic validations
+      if (!name || !email || !mobile || !gender || !color) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Email format validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Mobile number validation (10 digits)
+      const mobilePattern = /^[0-9]{10}$/;
+      if (!mobile.match(mobilePattern)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      const output = 
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Mobile: ${mobile}\n` +
+        `Gender: ${gender}\n` +
+        `Favourite Colour: ${color}`;
+
+      document.getElementById("output").value = output;
+    }
+  </script>
+
+</body>
+</html>

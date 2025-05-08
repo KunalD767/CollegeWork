@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Frames Webpage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 150px); /* 2 columns */
+            grid-template-rows: repeat(2, 150px); /* 2 rows */
+            gap: 20px;
+        }
+
+        .frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            height: 150px;
+        }
+
+        .frame:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #frame1 { background: linear-gradient(to right, #007BFF, #00C6FF); }
+        #frame2 { background: linear-gradient(to right, #28A745, #86DF66); }
+        #frame3 { background: linear-gradient(to right, #FF5733, #FF8C66); }
+        #frame4 { background: linear-gradient(to right, #FFD700, #FFEA80); color: black; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="frame1" class="frame">Frame 1</div>
+        <div id="frame2" class="frame">Frame 2</div>
+        <div id="frame3" class="frame">Frame 3</div>
+        <div id="frame4" class="frame">Frame 4</div>
+    </div>
+</body>
+</html>

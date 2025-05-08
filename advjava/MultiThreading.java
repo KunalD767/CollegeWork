@@ -28,8 +28,10 @@ class RunnableExample implements Runnable {
     }
 }
 
-public class MultiThreadingDemo {
+public class MultiThreading {
     public static void main(String[] args) {
+        System.out.println("Kajal Kansal 20914802722");
+
         ThreadExample thread1 = new ThreadExample();
         thread1.setName("Thread-1");
 

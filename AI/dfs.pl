@@ -1,49 +1,67 @@
-% Edges
-%     1
-%    / \
-%   2   3
-%  /     \
-% 4  ---  5
-%  \     /
-%   \   /
-%     6
+% Example graph represented as a tree:
+%               a
+%            /     \
+%           b       c
+%         /   \       \
+%        d     e       f
+% Facts defining the graph structure
+edge(a, b).
+edge(a, c).
+edge(b, d).
+edge(b, e).
+edge(c, f).
+edge(e, f).
 
+% Helper predicate for bidirectional traversal
+connected(X, Y) :- edge(X, Y).
+connected(X, Y) :- edge(Y, X).
 
-% Graph edges
+% Query to check if a node exists in the graph
+node_exists(Node) :- 
+    (connected(Node, _) -> 
+        format("Node: ~w exists.~n", [Node])
+    ; 
+        format("Node: ~w does not exist.~n", [Node])
+    ).
 
-edge(1, 2).
-edge(1, 3).
-edge(2, 4).
-edge(4, 6).
-edge(3, 5).
-edge(4, 5).
-edge(5, 6).
+% BFS traversal with start and end node
+bfs(Start, End) :-
+    (\+ connected(Start, _); \+ connected(End, _)) ->
+        format("Cannot reach: either ~w or ~w does not exist.~n", [Start, End]);
+    bfs_helper([(Start, none)], [], End, Path),
+    reverse(Path, FinalPath),
+    format("Final Path: "),
+    print_path(FinalPath).
 
-% BFS implementation
-bfs(Start, Goal) :-
-    bfs_queue([[Start]], Goal).
+% Base case: Empty queue, return visited path
+bfs_helper([], _, _, []).
 
-bfs_queue([[Goal|Path]|_], Goal) :-
-    reverse([Goal|Path], Solution),
-    write('BFS Path: '), write(Solution), nl.
+% Base case: End node found
+bfs_helper([(Node, Parent) | _], Visited, End, [Node | Visited]) :-
+    Node == End, !.
 
-bfs_queue([Path|Paths], Goal) :-
-    extend_path(Path, NewPaths),
-    append(Paths, NewPaths, UpdatedQueue),
-    bfs_queue(UpdatedQueue, Goal).
+% Recursive case: Process the queue
+bfs_helper([(Node, Parent) | Queue], Visited, End, Path) :-
+    (
+        Parent \= none -> 
+            format("Node: ~w (Parent: ~w)~n", [Node, Parent])
+        ; 
+            format("Starting Node: ~w~n", [Node])
+    ),
+    % Continue traversal for unvisited neighbors
+    \+ member(Node, Visited),
+    findall((Neighbor, Node), 
+            (connected(Node, Neighbor), \+ member(Neighbor, Visited)), 
+            Neighbors),
+    append(Queue, Neighbors, NewQueue),
+    bfs_helper(NewQueue, [Node | Visited], End, Path).
 
-extend_path([Node|Path], NewPaths) :-
-    findall([NewNode, Node|Path], (edge(Node, NewNode), \+ member(NewNode, [Node|Path])), NewPaths).
+% Skip visited nodes
+bfs_helper([(_, _) | Queue], Visited, End, Path) :-
+    bfs_helper(Queue, Visited, End, Path).
 
-% DFS implementation
-dfs(Start, Goal) :-
-    dfs_path(Start, Goal, [Start], Path),
-    reverse(Path, Solution),
-    write('DFS Path: '), write(Solution), nl.
-
-dfs_path(Goal, Goal, Path, Path).
-
-dfs_path(Node, Goal, Visited, Path) :-
-    edge(Node, NextNode),
-    \+ member(NextNode, Visited),
-    dfs_path(NextNode, Goal, [NextNode|Visited], Path).
+% Helper to print path in a-b-c format
+print_path([Node]) :- format("~w~n", [Node]).
+print_path([Node1, Node2 | Rest]) :- 
+    format("~w-", [Node1]),
+    print_path([Node2 | Rest]).
